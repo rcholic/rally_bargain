@@ -1,0 +1,19 @@
+syntax="proto3";
+
+package rallybargain.srv.feed;
+
+service FeedService {
+    rpc Create(Feed) returns (Response) {}
+}
+
+message Feed {
+    string id = 1;
+    string title = 2;
+    bool isLocal = 3;
+    string location = 4; // url or physical local
+    int64 datetime = 5;
+}
+
+message Response {
+    Feed feed = 1;
+}
