@@ -8,6 +8,7 @@ import (
 
 type Repository interface {
 	Create(feed *pb.Feed) error
+	GetAll() ([]*pb.Feed, error)
 }
 
 type FeedRepository struct {
@@ -21,4 +22,13 @@ func (repo *FeedRepository) Create(feed *pb.Feed) error {
 	logrus.Infof("feed created!")
 
 	return nil
+}
+
+func (repo *FeedRepository) GetAll() ([]*pb.Feed, error) {
+	var feeds []*pb.Feed
+	if err := repo.db.Find(&feeds).Error; err != nil {
+		return nil, err
+	}
+
+	return feeds, nil
 }

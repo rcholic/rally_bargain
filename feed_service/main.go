@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+
 	"github.com/micro/go-micro"
 	pb "github.com/rcholic/rally_bargain/feed_service/proto/feed"
 )
@@ -20,8 +21,8 @@ func main() {
 	repo := &FeedRepository{db}
 
 	srv := micro.NewService(
-		micro.Name("rallybargain.srv.feed")
-		micro.Version("latest")
+		micro.Name("rallybargain.srv.feed"),
+		micro.Version("latest"),
 	)
 
 	srv.Init()

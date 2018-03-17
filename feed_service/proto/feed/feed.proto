@@ -4,6 +4,7 @@ package rallybargain.srv.feed;
 
 service FeedService {
     rpc Create(Feed) returns (Response) {}
+    rpc GetAll(Request) returns (Response) {} 
 }
 
 message Feed {
@@ -14,6 +15,9 @@ message Feed {
     int64 datetime = 5;
 }
 
+message Request {}
+
 message Response {
     Feed feed = 1;
+    repeated Feed feeds = 2;
 }
