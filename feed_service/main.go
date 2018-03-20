@@ -13,7 +13,8 @@ func main() {
 	db, err := CreateConnection()
 	defer db.Close()
 	if err != nil {
-		log.Fatalf("Could not connect to DB: %v\n", err)
+		fmt.Printf("Could not connect to DB: %v", err)
+		// log.Fatalf("Could not connect to DB: %v\n", err)
 	}
 
 	db.AutoMigrate(&pb.Feed{})
@@ -29,6 +30,7 @@ func main() {
 
 	pb.RegisterFeedServiceHandler(srv.Server(), &service{repo})
 
+	log.Println("service server is running...")
 	if err := srv.Run(); err != nil {
 		log.Fatalf("err: %v\n", err)
 	}

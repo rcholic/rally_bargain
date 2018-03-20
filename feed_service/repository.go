@@ -29,6 +29,7 @@ func (repo *FeedRepository) GetAll() ([]*pb.Feed, error) {
 	if err := repo.db.Find(&feeds).Error; err != nil {
 		return nil, err
 	}
+	logrus.Infof("feeds count: %d\n", len(feeds))
 
 	return feeds, nil
 }

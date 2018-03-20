@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"time"
 
 	"golang.org/x/net/context"
@@ -45,5 +44,5 @@ func main() {
 		logrus.Println(v)
 	}
 
-	os.Exit(0) // exit here
+	// os.Exit(0) // exit here
 }
